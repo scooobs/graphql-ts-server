@@ -1,4 +1,3 @@
-import * as bcrypt from "bcryptjs";
 import * as yup from "yup";
 // import { v4 } from "uuid";
 import { User } from "../../entity/User";
@@ -51,10 +50,9 @@ export const resolvers: ResolverMap = {
         ];
       }
 
-      const hashedPassword = await bcrypt.hash(password, 10);
       const user = User.create({
         email,
-        password: hashedPassword,
+        password,
       });
 
       await user.save();
