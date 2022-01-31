@@ -4,6 +4,15 @@ import { CookieJar } from "tough-cookie";
 
 wrapper(axios);
 
+const forgotPasswordChangeMutation = (newPassword: string, key: string) => `
+mutation {
+  forgotPasswordChange(newPassword: "${newPassword}", key: "${key}") {
+    path
+    message
+  }
+}
+`;
+
 const registerMutation = (e: string, p: string) => `
 mutation {
   register(email: "${e}", password: "${p}") {
@@ -71,5 +80,13 @@ export class TestClient {
 
   async logout() {
     return axios.post(this.url, { query: logoutMutation }, this.options);
+  }
+
+  async forgotPasswordChange(newPassword: string, key: string) {
+    return axios.post(
+      this.url,
+      { query: forgotPasswordChangeMutation(newPassword, key) },
+      this.options
+    );
   }
 }

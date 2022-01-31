@@ -5,12 +5,12 @@ import { ResolverMap } from "../../types/graphql-utils";
 import { MutationRegisterArgs } from "../../types/schema";
 // import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
 import { formatYupError } from "../../utils/formatYupErorr";
+import { registerPasswordValidation } from "../../yupSchemas";
 // import { sendEmail } from "../../utils/sendEmail";
 import {
   duplicateEmail,
   emailNotLongEnough,
   emailNotValid,
-  passwordNotLongEnough,
 } from "./errorMessages";
 
 const schema = yup.object().shape({
@@ -20,7 +20,7 @@ const schema = yup.object().shape({
     .max(255)
     .email(emailNotValid)
     .required(),
-  password: yup.string().min(5, passwordNotLongEnough).max(255).required(),
+  password: registerPasswordValidation,
 });
 
 export const resolvers: ResolverMap = {

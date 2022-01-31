@@ -16,12 +16,30 @@ export type Query = {
   __typename?: 'Query';
   bye: Scalars['String'];
   bye2: Scalars['String'];
+  dummy?: Maybe<Scalars['String']>;
+  dummy2?: Maybe<Scalars['String']>;
+  me?: Maybe<User>;
+};
+
+export type User = {
+  __typename?: 'User';
+  email: Scalars['String'];
+  id: Scalars['ID'];
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
+  forgotPasswordChange?: Maybe<Array<Error>>;
   login?: Maybe<Array<Error>>;
+  logout?: Maybe<Scalars['Boolean']>;
   register?: Maybe<Array<Error>>;
+  sendForgotPasswordEmail?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type MutationForgotPasswordChangeArgs = {
+  key: Scalars['String'];
+  newPassword: Scalars['String'];
 };
 
 
@@ -34,6 +52,11 @@ export type MutationLoginArgs = {
 export type MutationRegisterArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
+};
+
+
+export type MutationSendForgotPasswordEmailArgs = {
+  email: Scalars['String'];
 };
 
 export type Error = {

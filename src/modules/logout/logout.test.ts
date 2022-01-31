@@ -28,7 +28,31 @@ afterAll(async () => {
 });
 
 describe("logout", () => {
-  it("test logging out a user", async () => {
+  it("multiple sessions", async () => {
+    // computer 1
+    const session1 = new TestClient(process.env.TEST_HOST as string);
+
+    // computer 2
+    const session2 = new TestClient(process.env.TEST_HOST as string);
+
+    await session1.login(email, password);
+    await session2.login(email, password);
+
+    expect(await (await session1.login(email, password)).data.data).toEqual(
+      await (
+        await session2.login(email, password)
+      ).data.data
+    );
+
+    await session1.logout();
+    expect(await (await session1.login(email, password)).data.data).toEqual(
+      await (
+        await session2.login(email, password)
+      ).data.data
+    );
+  });
+
+  it("single sessions", async () => {
     const client = new TestClient(process.env.TEST_HOST as string);
     await client.login(email, password);
 
