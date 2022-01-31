@@ -1,7 +1,13 @@
 {
   "name": "graphql-ts-server",
-  "version": "0.0.1",
-  "description": "Awesome project developed with TypeORM.",
+  "version": "1.0.0",
+  "description": "GraphQL Typescript Server Boilerplate",
+  "license": "MIT",
+  "homepage": "https://github.com/scooobs/graphql-ts-server#readme",
+  "author": {
+    "name": "Conal O'Leary",
+    "url": "https://scooobs.github.io"
+  },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.4.0",
     "@graphql-codegen/typescript": "^2.4.2",
@@ -60,8 +66,7 @@
   "scripts": {
     "generate": "graphql-codegen",
     "start": "NODE_ENV=development nodemon --exec ts-node -T src/index.ts",
-    "test": "NODE_ENV=test jest --force-exit --runInBand",
-    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
+    "test": "NODE_ENV=test jest --force-exit --runInBand"
   },
   "jest": {
     "globalSetup": "./src/testSetup/setup.ts",
