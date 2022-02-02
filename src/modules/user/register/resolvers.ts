@@ -1,11 +1,13 @@
 import * as yup from "yup";
+import { User } from "../../../entity/User";
+import { ResolverMap } from "../../../types/graphql-utils";
+import { MutationRegisterArgs } from "../../../types/schema";
+import { formatYupError } from "../../../utils/formatYupErorr";
+import { registerPasswordValidation } from "../../../yupSchemas";
 // import { v4 } from "uuid";
-import { User } from "../../entity/User";
-import { ResolverMap } from "../../types/graphql-utils";
-import { MutationRegisterArgs } from "../../types/schema";
+
 // import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
-import { formatYupError } from "../../utils/formatYupErorr";
-import { registerPasswordValidation } from "../../yupSchemas";
+
 // import { sendEmail } from "../../utils/sendEmail";
 import {
   duplicateEmail,

@@ -1,13 +1,14 @@
 import * as bcrypt from "bcryptjs";
-import { userIdSessionPrefix } from "../../constants";
-import { User } from "../../entity/User";
+import { userIdSessionPrefix } from "../../../constants";
+import { User } from "../../../entity/User";
+import { ResolverMap } from "../../../types/graphql-utils";
+import { MutationLoginArgs } from "../../../types/schema";
 
-import { ResolverMap } from "../../types/graphql-utils";
-import { MutationLoginArgs } from "../../types/schema";
 import {
   confirmEmailError,
   forgotPasswordLockedError,
   invalidLogin,
+  noPasswordError,
 } from "./errorMessages";
 
 const errorResponse = [
@@ -47,6 +48,15 @@ export const resolvers: ResolverMap = {
           {
             path: "email",
             message: forgotPasswordLockedError,
+          },
+        ];
+      }
+
+      if (!user.password) {
+        return [
+          {
+            path: "password",
+            message: noPasswordError,
           },
         ];
       }

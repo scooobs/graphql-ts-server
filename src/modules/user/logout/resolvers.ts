@@ -1,5 +1,5 @@
-import { ResolverMap } from "../../types/graphql-utils";
-import { removeAllUsersSessions } from "../../utils/removeAllUsersSessions";
+import { ResolverMap } from "../../../types/graphql-utils";
+import { removeAllUsersSessions } from "../../../utils/removeAllUsersSessions";
 
 export const resolvers: ResolverMap = {
   Query: {

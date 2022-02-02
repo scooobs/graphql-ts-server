@@ -4,12 +4,12 @@
 
 import { Connection } from "typeorm";
 
-import { User } from "../../entity/User";
-import { redis } from "../../redis";
-import { createForgotPasswordLink } from "../../utils/createForgotPasswordLink";
-import { createTypeormConn } from "../../utils/createTypeormConn";
-import { forgotPasswordLockAccount } from "../../utils/forgotPasswordLockAccount";
-import { TestClient } from "../../utils/testClient";
+import { User } from "../../../entity/User";
+import { redis } from "../../../redis";
+import { createForgotPasswordLink } from "../../../utils/createForgotPasswordLink";
+import { createTypeormConn } from "../../../utils/createTypeormConn";
+import { forgotPasswordLockAccount } from "../../../utils/forgotPasswordLockAccount";
+import { TestClient } from "../../../utils/testClient";
 import { forgotPasswordLockedError } from "../login/errorMessages";
 import { passwordNotLongEnough } from "../register/errorMessages";
 import { expiredKeyError } from "./errorMessages";

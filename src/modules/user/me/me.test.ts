@@ -3,10 +3,9 @@
  */
 
 import { Connection } from "typeorm";
-
-import { User } from "../../entity/User";
-import { createTypeormConn } from "../../utils/createTypeormConn";
-import { TestClient } from "../../utils/testClient";
+import { User } from "../../../entity/User";
+import { createTypeormConn } from "../../../utils/createTypeormConn";
+import { TestClient } from "../../../utils/testClient";
 
 let conn: Connection;
 let user: User;
